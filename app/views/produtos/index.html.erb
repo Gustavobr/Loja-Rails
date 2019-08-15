@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Loja</title>
+  </head>
+  <body>
+    <div class="container">
+    <div class="alert alert-success"  role="alert">
+        <h4 class="alert-heading"> Tabela de Produtos </h4>
+    </div>
+      <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                  <td>Nome</td>
+                  <td>Descricao</td>
+                  <td>Preco</td>
+                  <td>Quantidade</td>
+
+                </tr>
+            </thead>
+        <tbody>
+          <% @produto = Produto.new %>
+          <%  @produto.nome = 'Camiseta'%>
+          <% @produto.descricao ='Bonita'%>
+          <% @produto.preco = 50.0 %>
+          <% @produto.quantidade = 10 %>
+            <tr>
+              <td><%=@produto.nome %></td>
+              <td><%=@produto.descricao %></td>
+              <td><%=@produto.preco%></td>
+              <td><%=@produto.quantidade %></td>
+            </tr>
+        </tbody>
+   </table>
+    <br/>
+    <hr/>
+
+    <h3 class="alert-heading">Novos Produtos </h3>
+      <br/>
+    <div class="row">
+      <!--tamanho linha -->
+    <div class="col-sm-8">
+    <div class="form-group">
+    <%=form_for Produto.new do |form| %>
+        <form>
+            <%=form.label :nome  %>
+            <%=form.text_field :nome, class:'form-control' %>
+        <br/>
+            <%=form.label :descricao %>
+            <%=form.text_area :descricao , class:'form-control'%>
+        <br/>
+        <%=form.label :preco %>
+          <%=form.number_field :preco , class:'form-control', step:0.01%>
+    <br/>
+    <%=form.label :quantidade %>
+      <%=form.text_field :quantidade , class:'form-control'%>
+    <br/>
+        <%=form.submit 'Gravar', class:'brn btn-primary'%>
+      </form>
+      </div>
+    </div>
+  </div>
+
+
+
+    <%end %>
+   </div>
+  </body>
+</html>
