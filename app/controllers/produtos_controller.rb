@@ -9,12 +9,17 @@ class ProdutosController < ApplicationController
   def create
       produto = params.require(:produto).permit(:nome, :descricao, :preco, :quantidade)
       Produto.create produto
-
-      redirect_to root_path
+       flash[:success] = "produto criado"
+       redirect_to root_path
   end
 
 
-  def new
-
-  end
+  # def new
+  #     @produto = Produto.new
+  #     nome        = params[:nome]
+  #     descricao   = params[:descricao]
+  #     preco       = params[:preco]
+  #     quantidade  = params[:quantiade]
+  #
+  # end
 end

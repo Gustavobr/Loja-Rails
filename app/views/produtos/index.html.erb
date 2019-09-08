@@ -20,17 +20,30 @@
                 </tr>
             </thead>
         <tbody>
-          <% @produto = Produto.new %>
-          <%  @produto.nome = 'Camiseta'%>
-          <% @produto.descricao ='Bonita'%>
-          <% @produto.preco = 50.0 %>
-          <% @produto.quantidade = 10 %>
+          <% lista = Array.new() %>
+          <% produto = Produto.new({:nome => 'Calvin Klein blusa', :descricao => 'Nova', :preco => '100', :quantidade => '10'}) %>
+          <% lista.push(produto) %>
+          <% lista.each do |produto| %>
             <tr>
-              <td><%=@produto.nome %></td>
-              <td><%=@produto.descricao %></td>
-              <td><%=@produto.preco%></td>
-              <td><%=@produto.quantidade %></td>
+              <td><%=produto.nome %></td>
+              <td><%=produto.descricao %></td>
+              <td><%=produto.preco%></td>
+              <td><%=produto.quantidade %></td>
             </tr>
+          <%end %>
+        </tbody>
+         <tbody>
+          <% @produto = Array.new() %>
+          <% @produto = Produto.all %>
+
+          <% @produto.each do |produto| %>
+            <tr>
+              <td><%=produto.nome %></td>
+              <td><%=produto.descricao %></td>
+              <td><%=produto.preco%></td>
+              <td><%=produto.quantidade %></td>
+            </tr>
+          <%end %>
         </tbody>
    </table>
     <br/>
